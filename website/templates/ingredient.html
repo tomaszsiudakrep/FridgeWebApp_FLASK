@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}Ingredients{% endblock %}
+
+{% block content %}
+    <h1 align="center">Ingredients</h1>
+    <form method="POST">
+        <label for="unit"></label>
+        <div class="form-post-chosen-style">
+            <select name="unit" id="unit" class="form-select form-control">
+                <option selected>Choose...</option>
+                {% for unit in units %}
+                <option value="{{ unit }}">{{ unit }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <label for="product"></label>
+        <div class="form-post-chosen-style">
+            <select name="product" id="product" class="form-select form-control">
+                <option selected>Choose...</option>
+                {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <label for="expiration_date">Expiration Date:</label>
+        <input type="date" id="expiration_date" name="expiration_date" required>
+        <div class="form-post-submit-style">
+            <button type="submit" class="btn btn-primary" id="add_product">Add ingredient</button>
+         </div>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Unit</th>
+                <th>Expiration date</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in ingredients %}
+                <tr>
+                    <td>{{ ingredient.product_id }}</td>
+                    <td>{{ str(ingredient.unit)[4:] }}</td>
+                    <td>{{ ingredient.expiration_date }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteProduct({{ ingredient.id }})">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

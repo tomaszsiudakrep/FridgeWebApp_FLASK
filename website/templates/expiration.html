@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Products expiration{% endblock %}
+
+{% block content %}
+    <h1 align="center">Products expiration!</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Expiration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.expiration_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -6,7 +6,7 @@
         <title>{% block title %}Home{% endblock %}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,14 +18,28 @@
                     {% if user.is_authenticated %}
                     <a class="btn btn-primary" id="home" href="/">Home</a>
                     <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Fridge
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Section</a>
-                        <a class="dropdown-item" href="#">Products</a>
+                        <a class="dropdown-item" href="/group">Groups</a>
+                        <a class="dropdown-item" href="/product">Products</a>
                       </div>
                     </div>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        What do you have
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/fridge_status">Fridge</a>
+                        <a class="dropdown-item" href="/freezer_status">Freezer</a>
+                      </div>
+                    </div>
+                    <a class="btn btn-primary float-right" id="freezer" href="/expiration">Freezer</a>
+                    <a class="btn btn-primary float-right" id="expiration" href="/expiration">Expiration</a>
+                    <a class="btn btn-primary float-right" id="recipes" href="/recipes">Recipes</a>
+                    <a class="btn btn-primary float-right" id="meals" href="/meals">Daily Meals</a>
+                    <a class="btn btn-primary float-right" id="profile" href="/profile">Profile</a>
                     <a class="btn btn-primary float-right" id="logout" href="/logout">Logout</a>
                     {% else %}
                     <a class="btn btn-primary" id="login" href="/login">Login</a>

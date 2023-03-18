@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block title %}Products{% endblock %}
+
+{% block content %}
+    <h1 align="center">Products</h1>
+    <form method="POST">
+        <label for="group"></label>
+        <div class="form-post-chosen-style">
+            <select name="group" id="group" class="form-select form-control">
+                <option selected>Choose...</option>
+                {% for group in groups %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <label for="product"></label>
+        <div class="form-post-input-style">
+            <input class="form-control" type="text" id="product" placeholder="Enter product name.." name="product">
+        </div>
+<!--        <label for="expiration_date">Expiration Date:</label>-->
+<!--        <input type="date" id="expiration_date" name="expiration_date" required>-->
+        <div class="form-post-submit-style">
+            <button type="submit" class="btn btn-primary" disabled id="add_product">Add product</button>
+         </div>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Expiration date</th>
+                <th>Group Id</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for group, product in products %}
+                <tr>
+                    <td>{{ product.product_id }}</td>
+                    <td>{{ product.expiration_date }}</td>
+                    <td>{{ group }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteProduct({{ product.id }})">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+.form-post-chosen-style {
+  display: inline-block;
+  width: 90%;
+  height: 100%;
+}
+
+.form-post-submit-style {
+  display: inline-block;
+  width: 9%;
+  vertical-align: top;
+  height: 100%;
+}
+
+.form-post-input-style {
+  width: 90%;
+
+}
